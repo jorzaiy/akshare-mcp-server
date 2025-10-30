@@ -16,25 +16,75 @@
 
 ## 📦 安装
 
-### 前置要求
+### 方式一：使用 UVX（推荐）⭐
 
-- Python 3.8 或更高版本
-- pip 包管理器
+UVX 是最简单的安装方式，自动管理依赖和虚拟环境。
 
-### 安装步骤
+#### 1. 安装 UV
 
-1. 克隆仓库：
+```bash
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+#### 2. 配置 MCP 服务器
+
+在 MCP 客户端配置中添加：
+
+```json
+{
+  "mcpServers": {
+    "akshare-stock": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/jorzaiy/akshare-mcp-server.git",
+        "akshare-mcp-server"
+      ]
+    }
+  }
+}
+```
+
+#### 3. 本地开发配置
+
+如果你克隆了仓库进行本地开发：
+
+```json
+{
+  "mcpServers": {
+    "akshare-stock": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\path\\to\\akshare-mcp-server",
+        "run",
+        "akshare-mcp-server"
+      ]
+    }
+  }
+}
+```
+
+### 方式二：传统 Python 方式
+
+#### 1. 克隆仓库
+
 ```bash
 git clone https://github.com/jorzaiy/akshare-mcp-server.git
 cd akshare-stock-server
 ```
 
-2. 安装依赖：
+#### 2. 安装依赖
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 配置 MCP 服务器
+#### 3. 配置 MCP 服务器
 
 在 Kilo Code 或其他支持 MCP 的客户端中添加服务器配置：
 
