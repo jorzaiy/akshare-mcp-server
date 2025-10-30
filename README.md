@@ -25,7 +25,7 @@
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/your-username/akshare-stock-server.git
+git clone https://github.com/jorzaiy/akshare-mcp-server.git
 cd akshare-stock-server
 ```
 
