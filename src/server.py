@@ -19,7 +19,8 @@ from src.tools import (
     get_stock_main_indicators,
     get_batch_stock_indicators,
     export_data_to_file,
-    search_stock
+    search_stock,
+    get_all_stocks
 )
 
 # 创建MCP服务器实例
@@ -202,6 +203,14 @@ async def list_tools() -> list[Tool]:
                 },
                 "required": ["query"]
             }
+        ),
+        Tool(
+            name="get_all_stocks",
+            description="获取所有A股股票列表",
+            inputSchema={
+                "type": "object",
+                "properties": {}
+            }
         )
     ]
 
@@ -262,6 +271,9 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             result = search_stock(
                 query=arguments["query"]
             )
+        
+        elif name == "get_all_stocks":
+            result = get_all_stocks()
         
         else:
             result = f"未知工具: {name}"
